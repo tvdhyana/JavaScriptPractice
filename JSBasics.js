@@ -358,7 +358,7 @@ setTimeout(() => {
 }, 4000);
 console.log("Dhyana");
 
-//Ex-2
+//Ex-2 //async returns promise, await is wait for promise
 async function understandingAsync() {
   console.log("Inside function");
   const response = await fetch("https://api.github.com/users");
