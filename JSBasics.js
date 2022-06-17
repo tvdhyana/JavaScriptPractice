@@ -387,3 +387,145 @@ const person = {
 };
 console.log(person);
 console.log(person.fullName());
+
+//ES6 Remainingt Topics
+
+// Class
+// unnamed
+let myRectangle = class {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(myRectangle.name);
+
+// named
+let newRectangle = class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(newRectangle.name);
+
+//Prototype methods
+class mineRectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+  // Getter
+  get area() {
+    return this.calcArea();
+  }
+  // Method
+  calcArea() {
+    return this.height * this.width;
+  }
+}
+
+const square = new mineRectangle(10, 10);
+console.log(square.area);
+
+//Symbol
+const trainee = {
+  firstName: "Dhyana",
+  lastName: "Dave",
+  stack: "ReactNative",
+};
+
+let id = Symbol("id");
+trainee[id] = 101;
+
+console.log(trainee.id); //undefined
+console.log(trainee[id]);
+
+//Default parameter value
+function myFunction(x, y = 10) {
+  return x + y;
+}
+console.log(myFunction(5));
+
+//function Rest parameter
+function sum(...args) {
+  let sum = 0;
+  for (let arg of args) sum += arg;
+  return sum;
+}
+let sumOfVal = sum(4, 9, 16, 25, 29, 100, 66, 77);
+console.log(sumOfVal);
+
+//Spread Operators - useed to combine array and objects
+
+//Ex1
+const numbersOne = [1, 2, 3];
+const numbersTwo = [4, 5, 6];
+const numbersCombined = [...numbersOne, ...numbersTwo];
+console.log(numbersCombined);
+
+//Ex2
+const numbers = [1, 2, 3, 4, 5, 6];
+const [one, two, ...rest] = numbers;
+console.log(one);
+console.log(two);
+console.log(rest);
+
+//Ex3
+const myVehicle = {
+  brand: "Ford",
+  model: "Mustang",
+  color: "red",
+};
+const updateMyVehicle = {
+  type: "car",
+  year: 2021,
+  color: "yellow",
+};
+const myUpdatedVehicle = { ...myVehicle, ...updateMyVehicle };
+console.log(myUpdatedVehicle); //color will be overwritten by the last object that was passed
+
+//Ternary operator
+
+//normal if-else
+let intValue = 10;
+if (intValue > 5) {
+  console.log("number is greater than 5");
+} else {
+  console.log("number is less than 5");
+}
+
+//Ternary Operator
+intValue > 5
+  ? console.log("number is greater than 5")
+  : console.log("number is less than 5");
+
+//Array
+let myNumArray = Array.from("ABCDEFG");
+console.log(myNumArray);
+
+const myFruits = ["Banana", "Orange", "Apple", "Mango"];
+const keys = myFruits.keys();
+console.log(keys);
+
+//Error handling & Try - Catch Block
+let traineeName = "Dhyana";
+if (traineeName == undefined) {
+  throw Error("Trainee name is undefined");
+} else {
+  console.log("Trainee name is " + traineeName);
+}
+
+try {
+  let newTraineeName;
+  if (newTraineeName == undefined) {
+    throw Error("Trainee name is undefined");
+  } else {
+    console.log("Trainee name is " + newTraineeName);
+  }
+} catch (error) {
+  console.log("Trainee name is not available");
+  console.log(error.message);
+} finally {
+  console.log("Finally we'll run this");
+}
